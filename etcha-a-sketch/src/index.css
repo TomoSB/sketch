@@ -1,15 +1,13 @@
-.MainContainer {
-  max-height: 600px;
-  max-width: 600px;
+.GlavniKontejner {
+  height: 500px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
-
+  gap: 0;
+  font-size: 5px;
 }
 
-.grid-item {
-  width: fit-content;
+.grid-element {
   border: 1px solid black;
-  flex-grow: 20;
-  flex-shrink: 20;
-
+  box-sizing: border-box;
 }

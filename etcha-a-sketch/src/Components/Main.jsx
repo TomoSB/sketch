@@ -1,17 +1,40 @@
 import { useState } from "react";
 
-export default function Main() {
-  const [rows, setRows] = useState(16); //pocetni je 10, mapraviti da se mijenja kada korisnik unese broj
-  const [columns, setColumns] = useState(16); // pocetni je 10, mapraviti da se mijenja kada korisnik unese broj
+export default function Glavni() {
+  const [redovi, postaviRedove] = useState(10); // početna vrijednost za redove
+  const [stupci, postaviStupce] = useState(10); // početna vrijednost za stupce
 
-  const gridItems = [];
-  for (let i = 0; i < rows * columns; i++) {
-    gridItems.push(
-      <div key={i} className="grid-item">
-        {i + 1}
+  const gridElementi = [];
+  for (let i = 0; i < redovi * stupci; i++) {
+    gridElementi.push(
+      <div
+        key={i}
+        className="grid-element"
+        style={{
+          minHeight: `${100 / redovi}%`,
+          minWidth: `${100 / stupci}%`,
+        }}
+      >
+        {}
       </div>
     );
   }
 
-  return <div className="MainContainer">{gridItems}</div>;
+  return (
+    <div>
+      <input
+        type="number"
+        value={redovi}
+        onChange={(e) => postaviRedove(Number(e.target.value))}
+        placeholder="Unesi broj redova"
+      />
+      <input
+        type="number"
+        value={stupci}
+        onChange={(e) => postaviStupce(Number(e.target.value))}
+        placeholder="Unesi broj stupaca"
+      />
+      <div className="GlavniKontejner">{gridElementi}</div>
+    </div>
+  );
 }
